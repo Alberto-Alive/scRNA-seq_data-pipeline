@@ -1,0 +1,31 @@
+seed: 0
+
+qc:
+  min_genes_per_cell: 200
+  min_cells_per_gene: 3
+  max_pct_mito: 20.0
+  mito_prefix: "MT-"
+
+preprocess:
+  target_sum: 10000.0
+  n_top_genes: 2000
+  hvg_flavor: seurat_v3
+
+integrate:
+  method: scvi
+  batch_key: batch
+  n_latent: 30
+  max_epoch: 200
+
+cluster:
+  n_neighbours: 15
+  resolution: 1.0
+  random_state: 0
+
+annotate:
+  markers:
+    T_cell: [CD3D, CD3E, CD2, IL7R]
+    B_cell: [MS4A1, CD79A, CD79B]
+    NK_cell: [GNLY, NKG7, KLRD1]
+    Monocyte: [LYZ, CD14, FCGR3A]
+    Dendritic: [FCER1A, CST3]
