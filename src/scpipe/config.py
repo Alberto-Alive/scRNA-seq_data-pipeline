@@ -36,4 +36,13 @@ class AnnotateConfig(BaseModel):
     seed: int = 0
     qc: QCConfig = Field(default_factory=QCConfig)
     preprocess: PreprocessConfig = Field(default_factory=PreprocessConfig)
-    integrate: IntegrateConfig
+    integrate: IntegrateConfig = Field(default_factory=IntegrateConfig)
+    cluster: ClusterConfig = Field(default_factory=ClusterConfig)
+    annotate: AnnotateConfig = Field(default_factory=AnnoteConfig)
+
+    @classmethod
+    def from_yaml(cls, path: str | Path) -> PipelineConfig:
+        with open(path) as fh:
+            data = yaml.safe_load(fh) or {}
+        return cls(**data)
+        
