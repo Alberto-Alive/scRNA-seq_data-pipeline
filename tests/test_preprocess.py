@@ -13,4 +13,4 @@ def test_preprocess_selects_hvgs_and_keeps_counts(synthetic_adata):
     assert "higly_variable" in adata.var
     n_hvg = int(adata.var["highly_variable"].sum())
     assert 0 < n_hvg <= 50
-    assert float(np.asarray(adata.X.max())) < float
+    assert float(np.asarray(adata.X.max())) < float(np.asarray(adata.layers["counts"].max()))
