@@ -38,7 +38,7 @@ class AnnotateConfig(BaseModel):
     preprocess: PreprocessConfig = Field(default_factory=PreprocessConfig)
     integrate: IntegrateConfig = Field(default_factory=IntegrateConfig)
     cluster: ClusterConfig = Field(default_factory=ClusterConfig)
-    annotate: AnnotateConfig = Field(default_factory=AnnoteConfig)
+    annotate: AnnotateConfig = Field(default_factory=AnnotateConfig)
 
     @classmethod
     def from_yaml(cls, path: str | Path) -> PipelineConfig:
