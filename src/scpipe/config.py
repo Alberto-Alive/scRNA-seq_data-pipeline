@@ -33,6 +33,9 @@ class ClusterConfig(BaseModel):
 
 
 class AnnotateConfig(BaseModel):
+    markers: dict[str, list[str]] = Field(default_factory=dict)
+
+class AnnotateConfig(BaseModel):
     seed: int = 0
     qc: QCConfig = Field(default_factory=QCConfig)
     preprocess: PreprocessConfig = Field(default_factory=PreprocessConfig)
