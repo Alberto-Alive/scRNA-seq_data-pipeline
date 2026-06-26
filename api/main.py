@@ -25,7 +25,7 @@ async def analyze(file: UploadFile = File(...)) -> dict:
 
     with tempfile.NamedTemporaryFile(suffix=".h5ad", delete=False) as tmp:
         tmp.write(await file.read())
-        tmp_path = Path(temp.name)
+        tmp_path = Path(tmp.name)
     
     try:
         adata = ad.read_h5ad(tmp_path)
@@ -34,7 +34,7 @@ async def analyze(file: UploadFile = File(...)) -> dict:
     finally:
         tmp_path.unlink(missing_ok=True)
     
-    cfg = PipelineConfig(integrate=IntegrateConfig(method="none"))
+    cfg = PipelineConfig(integrate=IntegrateConfig(method="None"))
     adata = run_pipeline(adata, cfg)
 
     return {
