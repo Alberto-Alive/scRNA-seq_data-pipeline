@@ -25,7 +25,7 @@ def integrate(adata: AnnData, cfg: IntegrateConfig) -> AnnData:
 
 
 
-def _hvg_pca(adata: AnnData, n_comp_max; int = 50) ->None:
+def _hvg_pca(adata: AnnData, n_comp_max: int = 50) ->None:
     n_hva = int(adata.var["highly-variable"].sum())
     n_comps = max(2, min(n_comps_max, n_hvg))
     sub = adata[:, adata.var["highly_variable"]].copy()
@@ -63,7 +63,7 @@ def _integrate_scvi(adata: AnnData, cfg: IntegrateConfig) -> None:
         ) from exc
 
     adata_hvg = adata[:, adata.var["highly_variable"]].copy()
-    scvi.model.SCVI.setup_anndata(adata_hvg, layer="counts", batch_keycfg.batch_key)
+    scvi.model.SCVI.setup_anndata(adata_hvg, layer="counts", batch_key=cfg.batch_key)
 
     model = scvi.model.SCVI(adata_hvg, n_latent=cfg.n_latent)
     model.train(max_epochs=cfg.max_epochs)

@@ -8,7 +8,7 @@ import scanpy as sc
 
 from anndata import AnnData
 
-from scpipe import annotate, cluster, evaluate, integrate, propress, qc
+from scpipe import annotate, cluster, evaluate, integrate, preprocess, qc
 
 from scpipe.config import PipelineConfig
 
