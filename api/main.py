@@ -20,7 +20,7 @@ def health() -> dict[str, str]:
 
 @app.post("/analyse")
 async def analyze(file: UploadFile = File(...)) -> dict:
-    if not file.filename or file.filename.endswith(".h5ad"):
+    if not file.filename or not file.filename.endswith(".h5ad"):
         raise HTTPException(status_code=400, detail="Please upload a .h5ad file.")
 
     with tempfile.NamedTemporaryFile(suffix=".h5ad", delete=False) as tmp:
