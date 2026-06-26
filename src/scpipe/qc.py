@@ -19,7 +19,7 @@ def apply_qc_filters(adata: AnnData, cfg: QCConfig) -> AnnData:
 
     sc.pp.filter_cells(adata, min_genes=cfg.min_genes_per_cell)
     sc.pp.filter_genes(adata, min_cells=cfg.min_cells_per_gene)
-    adata = adata[adata.obs["pct_count_mt"] <= cfg.max_pct_mito].copy()
+    adata = adata[adata.obs["pct_counts_mt"] <= cfg.max_pct_mito].copy()
 
     adata.uns["qc"]= {
         "n_cells_before": int(n_start),
