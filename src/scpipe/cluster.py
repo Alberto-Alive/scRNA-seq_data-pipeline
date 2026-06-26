@@ -10,8 +10,8 @@ from scpipe.integrate import REP_KEY
 
 
 def cluster(adata: AnnData, cfg: ClusterConfig ) -> AnnData:
-    rep = REP_KEY if REP_KEY in data.obsm else "X_pca"
-    sc.pp.neighbors(adata, n_neighbors=cfg.n_neighbors, use_repo=rep, random_state=cfg.random_state)
+    rep = REP_KEY if REP_KEY in adata.obsm else "X_pca"
+    sc.pp.neighbors(adata, n_neighbors=cfg.n_neighbours, use_rep=rep, random_state=cfg.random_state)
     sc.tl.leiden(
         adata,
         resolution=cfg.resolution,

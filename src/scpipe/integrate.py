@@ -19,7 +19,7 @@ def integrate(adata: AnnData, cfg: IntegrateConfig) -> AnnData:
         _baseline_pca(adata)
     else:
         raise ValueError(f"Unknown integration method: {cfg.method}")
-    edata.uns["integrate_method"] = cfg.method
+    adata.uns["integrate_method"] = cfg.method
 
     return adata
 

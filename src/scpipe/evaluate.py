@@ -22,5 +22,5 @@ def integration_metrics(
     if batch_key in adata.obs:
         metrics["batch_asw"] = _safe_silhouette(emb, adata.obs[batch_key])
     if label_key and label_key in adata.obs:
-        metrics["bio_asw"] = _safe_silhouette(emb, adta.obs[label_key])
-    return metric
+        metrics["bio_asw"] = _safe_silhouette(emb, adata.obs[label_key])
+    return metrics
