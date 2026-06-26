@@ -33,10 +33,10 @@ def preprocess(adata: AnnData, cfg: PreprocessConfig) -> AnnData:
             sc.pp.highly_variable_genes(
                 adata, n_top_genes=cfg.n_top_genes, flavor="seurat_v3", layer="counts"
             )
-            sc.pp.normalise_total(adata, target_sum=cfg.target_sum)
+            sc.pp.normalize_total(adata, target_sum=cfg.target_sum)
             sc.pp.log1p(adata)
         else:
-            sc.pp.normalise_total(adata, target_sum=cfg.target_sum)
+            sc.pp.normalize_total(adata, target_sum=cfg.target_sum)
             sc.pp.log1p(adata)
             sc.pp.highly_variable_genes(adata, n_top_genes=cfg.n_top_genes, flavor=flavor)
         adata.raw = adata

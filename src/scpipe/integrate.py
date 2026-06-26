@@ -15,7 +15,7 @@ def integrate(adata: AnnData, cfg: IntegrateConfig) -> AnnData:
         _integrate_scvi(adata, cfg)
     elif cfg.method == "harmony":
         _integrate_harmony(adata, cfg)
-    elif cfg.method == "none":
+    elif cfg.method == "None":
         _baseline_pca(adata)
     else:
         raise ValueError(f"Unknown integration method: {cfg.method}")
@@ -26,7 +26,7 @@ def integrate(adata: AnnData, cfg: IntegrateConfig) -> AnnData:
 
 
 def _hvg_pca(adata: AnnData, n_comp_max: int = 50) ->None:
-    n_hva = int(adata.var["highly-variable"].sum())
+    n_hva = int(adata.var["highly_variable"].sum())
     n_comps = max(2, min(n_comps_max, n_hvg))
     sub = adata[:, adata.var["highly_variable"]].copy()
     sc.pp.pca(sub, n_comps=n_comps)
