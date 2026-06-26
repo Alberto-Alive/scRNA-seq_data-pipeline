@@ -27,7 +27,7 @@ def integrate(adata: AnnData, cfg: IntegrateConfig) -> AnnData:
 
 def _hvg_pca(adata: AnnData, n_comp_max: int = 50) ->None:
     n_hva = int(adata.var["highly_variable"].sum())
-    n_comps = max(2, min(n_comp_max, n_hvg))
+    n_comps = max(2, min(n_comp_max, n_hva))
     sub = adata[:, adata.var["highly_variable"]].copy()
     sc.pp.pca(sub, n_comps=n_comps)
     adata.obsm["X_pca"] = sub.obsm["X_pca"]
